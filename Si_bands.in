@@ -1,0 +1,66 @@
+&CONTROL
+  calculation='bands',
+  outdir='./',
+  prefix='test1',
+  pseudo_dir='/home/pdiaz/Desktop/Carlos/DFT/Si/qe',
+  restart_mode = 'restart',
+  verbosity='low',
+  tstress=.false.,
+  tprnfor=.false.,
+  forc_conv_thr = 1.0D-4,
+/
+&SYSTEM
+  ibrav=2,
+  nat=2,
+  celldm(1)=10.26,
+  ntyp=1,
+  ecutwfc=30,
+  ecutrho=120,
+  input_dft='PBE',
+  occupations='fixed',
+  lspinorb=.true.
+  nbnd=10
+!  lda_plus_u = .true.,
+!  Hubbard_U(1) = 12.0, 
+!  Hubbard_U(2) = 6.5,
+!  smearing='gaussian',
+!  degauss=0.05d0,
+/
+&ELECTRONS
+  electron_maxstep = 100,
+  mixing_beta=0.4,
+  conv_thr=1.0d-9,
+/
+&IONS
+  ion_dynamics = 'bfgs',
+  bfgs_ndim    = 2,
+/
+&CELL
+               cell_dynamics = 'bfgs',
+                 cell_factor = 2.0,
+/
+ATOMIC_SPECIES
+Si   28.0855   Si_Carlos.upf
+
+ATOMIC_POSITIONS angstrom
+Si 0.0   0.0   0.0
+Si 1.361 1.361 1.361
+
+!CELL_PARAMETERS angstrom
+!   3.086243295  -0.000000003  -0.000000000
+!  -1.543142169   2.672893903  -0.000000000
+!   0.000000000   0.000000000   5.367213629
+
+K_POINTS {crystal_b}
+6
+0.500000000 0.500000000 0.500000000 60 !L
+0.000000000 0.000000000 0.000000000 60 !Gamma
+0.500000000 0.000000000 0.500000000 60 !X
+0.625000000 0.250000000 0.625000000 0 !U
+0.750000000 0.375000000 0.375000000 60 !K
+0.000000000 0.000000000 0.000000000 60 !Gamma
+
+
+!K_POINTS {automatic}
+!2 2 2 0 0 0
+
