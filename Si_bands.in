@@ -4,7 +4,7 @@
   prefix='silicon',                   ! save as silicion.save
   pseudo_dir='./',                    ! location of the pseudopotential  
   restart_mode = 'restart',           ! calculate from the save folder
-  verbosity='low',                    !
+  verbosity='high',                   ! information amount in the output file
   tprnfor=.false.,                    ! calculate forces
   forc_conv_thr = 1.0D-4              ! convergence threshold on forces (a.u)
 /
@@ -13,20 +13,18 @@
   celldm(1)=10.26,                    ! crystal structure constal (BOHR)
   nat=2,                              ! number of atoms in the unit cell
   ntyp=1,                             ! number of atoms types in the unit cell
-  ecutwfc=30,                         ! kinetic energy cutoff (Ry)
-  noncolin=.true.,                    ! perform noncollinear calculations
-  lspinorb=.true.,                    ! to use pseudo with spin-orbit
+  ecutwfc=40,                         ! kinetic energy cutoff (Ry)
   !input_dft='PBE',                   ! this will overwrite the pseudo
   occupations='fixed'                 ! fixed for insulators with a gap
-  nbnd=20
+  nbnd=12                             ! number of bands to be calculated
 /
 &ELECTRONS                            ! electronic variables: self-consistency, smearing
-  electron_maxstep = 100,             ! 
-  mixing_beta=0.4,                    !
-  conv_thr=1.0d-9,                    ! 
+  electron_maxstep = 100,             ! max number of iteration steps
+  mixing_beta=0.4,                    ! mixing factor
+  conv_thr=1.0d-9,                    ! convergence threshold
 /
 ATOMIC_SPECIES
-Si   28.0855   Si_Carlos.upf          ! atomic mass and pseudo file
+Si   28.0855   Si_pbesol.upf          ! atomic mass and pseudo file
 
 ATOMIC_POSITIONS angstrom             ! atomic positions in the unit cell
 Si 0.0   0.0   0.0

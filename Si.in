@@ -4,7 +4,7 @@
   prefix='silicon',                   ! save as silicion.save
   pseudo_dir='./',                    ! location of the pseudopotential  
   restart_mode = 'from_scratch',      ! calculate from the beginnig
-  verbosity='low',                    !
+  verbosity='high',                   ! information amount in the output file
   tprnfor=.false.,                    ! calculate forces
   forc_conv_thr = 1.0D-4              ! convergence threshold on forces (a.u)
 /
@@ -13,37 +13,25 @@
   celldm(1)=10.26,                    ! crystal structure constal (BOHR)
   nat=2,                              ! number of atoms in the unit cell
   ntyp=1,                             ! number of atoms types in the unit cell
-  ecutwfc=30,                         ! kinetic energy cutoff (Ry)
-  noncolin=.true.,                    ! perform noncollinear calculations
-  lspinorb=.true.,                    ! to use pseudo with spin-orbit
+  ecutwfc=40,                         ! kinetic energy cutoff (Ry)
   !input_dft='PBE',                   ! this will overwrite the pseudo
   occupations='fixed'                 ! fixed for insulators with a gap
 /
 &ELECTRONS                            ! electronic variables: self-consistency, smearing
-  electron_maxstep = 100,             !
-  mixing_beta=0.4,                    !
-  conv_thr=1.0d-9,                    !
+  electron_maxstep = 100,             ! max number of iteration steps
+  mixing_beta=0.4,                    ! mixing factor
+  conv_thr=1.0d-9,                    ! convergence threshold
 /
 &IONS                                 ! ionic variables: relaxation, dynamics
   ion_dynamics = 'bfgs',              ! use BFGS quasi-newton algorithm
-  bfgs_ndim    = 2,                   !
+  bfgs_ndim    = 2,                   ! number of old forces and displacements vectors used
 /
 ATOMIC_SPECIES
-Si   28.0855   Si_Carlos.upf          ! atomic mass and pseudo file
+Si   28.0855   Si_pbesol.upf          ! atomic mass and pseudo file
 
 ATOMIC_POSITIONS angstrom             ! atomic positions in the unit cell
 Si 0.0   0.0   0.0
 Si 1.361 1.361 1.361
 
-! K_POINTS {automatic}
-! 4 4 4 0 0 0
-
-K_POINTS {crystal_b}
-6
-0.500000000 0.500000000 0.500000000 15 !L
-0.000000000 0.000000000 0.000000000 15 !Gamma
-0.500000000 0.000000000 0.500000000 15 !X
-0.625000000 0.250000000 0.625000000 0 !U
-0.750000000 0.375000000 0.375000000 15 !K
-0.000000000 0.000000000 0.000000000 15 !Gamma
-
+K_POINTS {automatic}
+10 10 10 0 0 0
