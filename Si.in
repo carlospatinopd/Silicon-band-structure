@@ -1,37 +1,37 @@
-&CONTROL
-  calculation='relax',
-  outdir='./',
-  prefix='silicon',
-  pseudo_dir='./',
-  restart_mode = 'from_scratch',
-  verbosity='low',
-  forc_conv_thr = 1.0D-4
+&CONTROL                              ! general variables controlling the run
+  calculation='relax',                ! perform structural optimization
+  outdir='./',                        ! output in the same directory
+  prefix='silicon',                   ! save as silicion.save
+  pseudo_dir='./',                    ! location of the pseudopotential  
+  restart_mode = 'from_scratch',      ! calculate from the beginnig
+  verbosity='low',                    !
+  tprnfor=.false.,                    ! calculate forces
+  forc_conv_thr = 1.0D-4              ! convergence threshold on forces (a.u)
 /
-&SYSTEM
-  ibrav=2,
-  nat=2,
-  celldm(1)=10.26,
-  ntyp=1,
-  ecutwfc=30,
-  ecutrho=120,
-  noncolin=.true.,
-  lspinorb=.true.,
-  input_dft='PBE',
-  occupations='fixed'
+&SYSTEM                               ! structural information on the system
+  ibrav=2,                            ! fcc crystal structure
+  celldm(1)=10.26,                    ! crystal structure constal (BOHR)
+  nat=2,                              ! number of atoms in the unit cell
+  ntyp=1,                             ! number of atoms types in the unit cell
+  ecutwfc=30,                         ! kinetic energy cutoff (Ry)
+  noncolin=.true.,                    ! perform noncollinear calculations
+  lspinorb=.true.,                    ! to use pseudo with spin-orbit
+  !input_dft='PBE',                   ! this will overwrite the pseudo
+  occupations='fixed'                 ! fixed for insulators with a gap
 /
-&ELECTRONS
-  electron_maxstep = 100,
-  mixing_beta=0.4,
-  conv_thr=1.0d-9,
+&ELECTRONS                            ! electronic variables: self-consistency, smearing
+  electron_maxstep = 100,             !
+  mixing_beta=0.4,                    !
+  conv_thr=1.0d-9,                    !
 /
-&IONS
-  ion_dynamics = 'bfgs',
-  bfgs_ndim    = 2,
+&IONS                                 ! ionic variables: relaxation, dynamics
+  ion_dynamics = 'bfgs',              ! use BFGS quasi-newton algorithm
+  bfgs_ndim    = 2,                   !
 /
 ATOMIC_SPECIES
-Si   28.0855   Si_Carlos.upf
+Si   28.0855   Si_Carlos.upf          ! atomic mass and pseudo file
 
-ATOMIC_POSITIONS angstrom
+ATOMIC_POSITIONS angstrom             ! atomic positions in the unit cell
 Si 0.0   0.0   0.0
 Si 1.361 1.361 1.361
 
