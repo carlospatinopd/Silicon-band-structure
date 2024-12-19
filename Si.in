@@ -1,7 +1,7 @@
 &CONTROL
   calculation='relax',
   outdir='./',
-  prefix='test1',
+  prefix='silicon',
   pseudo_dir='./',
   restart_mode = 'from_scratch',
   verbosity='low',

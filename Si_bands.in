@@ -1,7 +1,7 @@
 &CONTROL
   calculation='bands',
   outdir='./',
-  prefix='test1',
+  prefix='silicon',
   pseudo_dir='./',
   restart_mode = 'restart',
   verbosity='low',

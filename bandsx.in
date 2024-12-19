@@ -1,5 +1,5 @@
 &BANDS
-  prefix = 'test1'
+  prefix = 'silicon'
   outdir = './'
   filband = 'Si_bands.dat'
 /
