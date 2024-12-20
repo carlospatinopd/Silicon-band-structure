@@ -1,5 +1,5 @@
 
-     Program BANDS v.7.3.1 starts on 19Dec2024 at 20:58:55 
+     Program BANDS v.7.3.1 starts on 20Dec2024 at 14:38:32 
 
      This program is part of the open-source Quantum ESPRESSO suite
      for quantum simulation of materials; please cite
@@ -11,7 +11,7 @@
      http://www.quantum-espresso.org/quote
 
      Serial version
-     110422 MiB available memory on the printing compute node when the environment starts
+     109203 MiB available memory on the printing compute node when the environment starts
 
 
      Reading xml data from directory:
@@ -3204,10 +3204,10 @@ E      2.00 -1.00  0.00
 
  **************************************************************************
 
-     BANDS        :      1.93s CPU      1.98s WALL
+     BANDS        :      1.83s CPU      1.88s WALL
 
 
-   This run was terminated on:  20:58:57  19Dec2024            
+   This run was terminated on:  14:38:34  20Dec2024            
 
 =------------------------------------------------------------------------------=
    JOB DONE.

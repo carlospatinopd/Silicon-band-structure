@@ -1,13 +1,18 @@
 clear
 clc
 
-data = load("Si_bands.dat.gnu");
-k = data(:, 1);
-E = data(:, 2);
+data_bands = load("Si_bands.dat.gnu");
+k = data_bands(:, 1);
+E = data_bands(:, 2);
 empty_row = [0; find(diff(k) < 0); length(k)];
 offset = -6.172;
 
+data_dos = readmatrix('Si_dos.dat', 'NumHeaderLines', 1);
+energy = data_dos(:, 1);
+dos = data_dos(:, 2);
+
 figure(1)
+subplot(1,2,1)
 hold on
 ylabel("Energy (eV)",FontSize=16)
 title("Silicon Band Structure",FontSize=22)
@@ -16,7 +21,7 @@ xticklabels({"L", "Γ", "X", "U,K", "Γ"})
 yticks([-12, -9, -6, -3, 0, 3, 6])
 yline(0, '--')
 yline(0.4625, '--')
-text(2.5, 0.9, "{\Delta}E = 0.4625 eV",FontSize=16)
+text(2.45, 0.9, "{\Delta}E = 0.4625 eV",FontSize=16)
 for i = 1:length(empty_row)-1
     idx_start = empty_row(i)+1;
     idx_end = empty_row(i+1);
@@ -27,5 +32,18 @@ ax.XGrid = "on";
 ax.XAxis.FontSize = 16;
 xlim([min(k), max(k)])
 ylim([-13, 6])
+pos1 = get(gca, 'Position');
+hold off
+
+subplot(1,2,2)
+plot(energy, -dos, 'LineWidth', 1.5)
+ylabel('Density of States (states/eV)', 'FontSize', 16)
+title('DOS', 'FontSize', 22)
+camroll(90)
+xlim([-13-offset,6-offset])
+hold off
+ax = gca;
+xticks([])
+set(gca, 'Position', [pos1(1)+pos1(3)+0.01, pos1(2), pos1(3)*0.5, pos1(4)]);
 fig = gcf;
-fig.Position(3:4)=[900,800];
+fig.Position(3:4)=[1850,800];
