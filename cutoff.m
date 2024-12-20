@@ -10,6 +10,6 @@ ax = gca;
 ax.XAxis.FontSize = 16;
 ax.YAxis.FontSize = 16;
 ylabel("Final Energy (Ry)",FontSize=20)
-xlabel("Kinetic Energy Cutoff",FontSize=20)
+xlabel("Kinetic Energy Cutoff (Ry)",FontSize=20)
 fig = gcf;
 fig.Position(3:4)=[1000,800];
