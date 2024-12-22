@@ -36,14 +36,15 @@ pos1 = get(gca, 'Position');
 hold off
 
 subplot(1,2,2)
-plot(energy, -dos, 'LineWidth', 1.5)
-ylabel('Density of States (states/eV)', 'FontSize', 16)
-title('DOS', 'FontSize', 22)
-camroll(90)
-xlim([-13-offset,6-offset])
+plot(-energy, dos, 'LineWidth', 1.5)
+title('DOS', FontSize=22)
+camroll(-90)
+xlim([-6+offset,13+offset])
 hold off
 ax = gca;
 xticks([])
 set(gca, 'Position', [pos1(1)+pos1(3)+0.01, pos1(2), pos1(3)*0.5, pos1(4)]);
+set(gca, 'YAxisLocation', 'right');
+
 fig = gcf;
 fig.Position(3:4)=[1850,800];

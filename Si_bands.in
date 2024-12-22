@@ -14,6 +14,7 @@
   nat=2,                              ! number of atoms in the unit cell
   ntyp=1,                             ! number of atoms types in the unit cell
   ecutwfc=40,                         ! kinetic energy cutoff (Ry)
+  ecutrho=160,                        ! charge density energy cutoff (Ry)
   !input_dft='PBE',                   ! this will overwrite the pseudo
   occupations='fixed'                 ! fixed for insulators with a gap
   nbnd=12                             ! number of bands to be calculated
@@ -26,9 +27,9 @@
 ATOMIC_SPECIES
 Si   28.0855   Si_pbesol.upf          ! atomic mass and pseudo file
 
-ATOMIC_POSITIONS angstrom             ! atomic positions in the unit cell
-Si 0.0   0.0   0.0
-Si 1.361 1.361 1.361
+ATOMIC_POSITIONS alat                 ! atomic positions in the unit cell
+Si 0.0  0.0  0.0
+Si 0.25 0.25 0.25
 
 K_POINTS {crystal_b}                  !
 6
